@@ -8,8 +8,8 @@ import java.util.List;
 
 public class WheelMinutePicker extends WheelPicker {
     public static final int MIN_MINUTES = 0;
-    public static final int MAX_MINUTES = 55;
-    public static final int STEP_MINUTES = 5;
+    public static final int MAX_MINUTES = 45;
+    public static final int STEP_MINUTES = 15;
 
     private int defaultMinute;
 
