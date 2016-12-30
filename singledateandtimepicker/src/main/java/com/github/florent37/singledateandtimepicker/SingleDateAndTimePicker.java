@@ -34,6 +34,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
     private int visibleItemCount;
 
     private boolean canBeOnPast;
+    private boolean canBeOnFuture;
 
     public SingleDateAndTimePicker(Context context) {
         this(context, null);
@@ -152,6 +153,11 @@ public class SingleDateAndTimePicker extends LinearLayout {
                     minutesPicker.scrollTo(minutesPicker.getDefaultItemPosition());
                     hoursPicker.scrollTo(hoursPicker.getDefaultItemPosition());
                 }
+                if (!canBeOnFuture && !isInPast(getDate())) {
+                    daysPicker.scrollTo(daysPicker.getDefaultItemPosition());
+                    minutesPicker.scrollTo(minutesPicker.getDefaultItemPosition());
+                    hoursPicker.scrollTo(hoursPicker.getDefaultItemPosition());
+                }
             }
         }, DELAY_BEFORE_CHECK_PAST);
     }
@@ -204,6 +210,14 @@ public class SingleDateAndTimePicker extends LinearLayout {
     public boolean canBeOnPast() {
         return canBeOnPast;
     }
+    
+    public void setCanBeOnFuture(boolean canBeOnFuture) {
+        this.canBeOnFuture = canBeOnFuture;
+    }
+
+    public boolean canBeOnPast() {
+        return canBeOnFuture;
+    }
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SingleDateAndTimePicker);
@@ -216,7 +230,11 @@ public class SingleDateAndTimePicker extends LinearLayout {
             getResources().getDimensionPixelSize(R.dimen.WheelItemTextSize));
         isCurved = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_curved, IS_CURVED_DEFAULT);
         isCyclic = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_cyclic, IS_CYCLIC_DEFAULT);
-        canBeOnPast = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_canBeOnPast, CAN_BE_ON_PAST_DEFAULT);
+        
+        
+        
+        
+        Past = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_canBeOnPast, CAN_BE_ON_PAST_DEFAULT);
         visibleItemCount = a.getInt(R.styleable.SingleDateAndTimePicker_picker_visibleItemCount, VISIBLE_ITEM_COUNT_DEFAULT);
 
         a.recycle();
