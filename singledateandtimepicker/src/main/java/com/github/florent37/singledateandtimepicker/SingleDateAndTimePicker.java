@@ -215,7 +215,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
         this.canBeOnFuture = canBeOnFuture;
     }
 
-    public boolean canBeOnPast() {
+    public boolean canBeOnFuture() {
         return canBeOnFuture;
     }
 
@@ -230,11 +230,8 @@ public class SingleDateAndTimePicker extends LinearLayout {
             getResources().getDimensionPixelSize(R.dimen.WheelItemTextSize));
         isCurved = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_curved, IS_CURVED_DEFAULT);
         isCyclic = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_cyclic, IS_CYCLIC_DEFAULT);
-        
-        
-        
-        
-        Past = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_canBeOnPast, CAN_BE_ON_PAST_DEFAULT);
+
+        canBeOnPast = a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_canBeOnPast, CAN_BE_ON_PAST_DEFAULT);
         visibleItemCount = a.getInt(R.styleable.SingleDateAndTimePicker_picker_visibleItemCount, VISIBLE_ITEM_COUNT_DEFAULT);
 
         a.recycle();
